@@ -21,7 +21,7 @@ namespace SetUpTest
         public void FailTestMethod1()
         {
             var pri = new Privileges();
-            var bvalue = pri.CheckExists("N");
+            var bvalue = pri.CheckExists("Y");
             Assert.AreEqual(true, bvalue);
         }
     }
