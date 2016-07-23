@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Unit Package</id>
+        <version>1.0.$Version$</version>   
+        <title>Unit Test</title>
+        <authors>GE Transportation</authors>
+        <owners>Vivek Bansal</owners>
+        <projectUrl>https://ExpressYard.com</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Run database script to copy upgrade scripts the MMS for script runner execution</description>
+        <copyright>GE Transportation</copyright>
+        <language>en-US</language>
+    </metadata>
+  <files>
+    <file src="..\*.*" exclude="**\*.cs" target="UpgradeScripts"/>
+  </files>
+</package>
