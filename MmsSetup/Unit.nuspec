@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Unit Package</id>
-        <version>1.0.$Version$</version>   
+        <version>$Version$</version>   
         <title>Unit Test</title>
         <authors>GE Transportation</authors>
         <owners>Vivek Bansal</owners>
@@ -13,6 +13,6 @@
         <language>en-US</language>
     </metadata>
   <files>
-    <file src="..\*.*" exclude="**\*.cs" target="UpgradeScripts"/>
+    <file src="..\*.*" exclude="**\*.cs" "/>
   </files>
 </package>
