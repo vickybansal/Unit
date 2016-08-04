@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>CrbWebPhpDeploy</id>
+    <version>$version$</version>
+    <authors>John Parlato GE</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Deploy PHP web dependencies</description>
+  </metadata>
+  <files>
+    <file src="*.*"  target="Core"/>
+  </files>
+</package>
