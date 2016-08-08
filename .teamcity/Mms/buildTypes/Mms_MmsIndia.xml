@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="dc37bcc5-2a2f-4319-9030-bcfb9a41509a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>MMS India</name>
+  <description />
+  <settings>
+    <disabled-settings>
+      <setting-ref ref="RUNNER_5" />
+      <setting-ref ref="RUNNER_6" />
+      <setting-ref ref="vcsTrigger" />
+    </disabled-settings>
+    <parameters>
+      <param name="env.AgentWorkDirectory" value="%teamcity.build.workingDir%" />
+      <param name="MSBuildParams" value="/p:Configuration=Release &quot;/p:Platform=Any CPU&quot;" />
+      <param name="outputdirectory" value="Code\RMI\EY\Mms\DatabaseDeployment\bin" />
+      <param name="Scriptnuspec" value="Code/Rmi/EY/Mms/Database/MMSDatabaseDeployment.nuspec" />
+      <param name="SolutionPath" value="Code\RMI\EY\Mms\Mms.sln" />
+      <param name="system.teamcity.activeVCSBranch.age.days" value="7" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_3" name="Nuget Restore Packages" type="jb.nuget.installer">
+        <parameters>
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nuget.updatePackages.mode" value="sln" />
+          <param name="nuget.use.restore" value="install" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="sln.path" value="%SolutionPath%" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_4" name="MSBuild" type="MSBuild">
+        <parameters>
+          <param name="build-file-path" value="%SolutionPath%" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="msbuild_version" value="4.5" />
+          <param name="run-platform" value="x64" />
+          <param name="runnerArgs" value="%MSBuildParams%" />
+          <param name="targets" value="Rebuild" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="4.0" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_5" name="UnitTest" type="VisualStudioTest">
+        <parameters>
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetTestRunner.Type" value="GenericProcess" />
+          <param name="mstest_enable" value="checked" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="vstest_detect_team_city_logger" value="true" />
+          <param name="vstest_engine" value="VSTest" />
+          <param name="vstest_framework" value="default" />
+          <param name="vstest_include" value="**\bin\**\*.Test.dll" />
+          <param name="vstest_platform" value="x86" />
+          <param name="vstest_runner_path" value="%teamcity.dotnet.vstest.12.0%" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_6" name="Package SQL Script" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.as.artifact" value="true" />
+          <param name="nuget.pack.output.clean" value="true" />
+          <param name="nuget.pack.output.directory" value="%outputdirectory%" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="Code/Rmi/EY/Mms/Database/MMSDatabaseDeployment.nuspec" />
+          <param name="nuget.pack.version" value="%build.number%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Mms_MMSGit" />
+      <vcs-entry-ref root-id="Mms_Main" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+

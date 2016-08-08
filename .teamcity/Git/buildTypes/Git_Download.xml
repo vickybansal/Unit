@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="5eece1e4-8aea-4b53-95d7-e3c09216075e" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Download</name>
+  <description />
+  <settings>
+    <options>
+      <option name="allowExternalStatus" value="true" />
+      <option name="buildNumberPattern" value="1.0.%build.counter%" />
+      <option name="checkoutMode" value="ON_AGENT" />
+    </options>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_11" name="Nuget package" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.as.artifact" value="true" />
+          <param name="nuget.pack.output.directory" value="C:\Temp" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="MMS.nuspec" />
+          <param name="nuget.pack.version" value="%build.number%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Git_Ssh1" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="groupCheckinsByCommitter" value="true" />
+          <param name="perCheckinTriggering" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_2" type="teamcity.github.status">
+        <parameters>
+          <param name="github_report_on" value="on start and finish" />
+          <param name="guthub_authentication_type" value="password" />
+          <param name="guthub_comments" value="true" />
+          <param name="guthub_context" value="continuous-integration/teamcity" />
+          <param name="guthub_host" value="https://api.github.com" />
+          <param name="guthub_owner" value="vickybansal" />
+          <param name="guthub_repo" value="Unit" />
+          <param name="guthub_username" value="vickybansal" />
+          <param name="secure:github_access_token" value="zxxdb2683bc7a1341c2f5970609bcd22d0de002ed917388af9ee6cbca998c2dc5a39e98b377364e7370775d03cbe80d301b" />
+          <param name="secure:guthub_username" value="zxx08d5063f9d1c9b08" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+

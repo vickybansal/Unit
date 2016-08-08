@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="cec40321-fce6-4a7a-b7b1-c73483b49a47" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>Run</name>
+  <description />
+  <settings>
+    <options>
+      <option name="buildNumberPattern" value="1.0.%build.counter%" />
+      <option name="checkoutMode" value="ON_AGENT" />
+      <option name="showDependenciesChanges" value="true" />
+    </options>
+    <disabled-settings>
+      <setting-ref ref="TRIGGER_1" />
+    </disabled-settings>
+    <parameters>
+      <param name="env.Nunit" value="C:\Program Files (x86)\NUnit.org\nunit-console" />
+      <param name="UnitPath" value="SetUpTest\bin\Release\SetUpTest.dll" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_8" name="Compile" type="VS.Solution">
+        <parameters>
+          <param name="build-file-path" value="MmsSetup.sln" />
+          <param name="msbuild.prop.Configuration" value="Release" />
+          <param name="msbuild_version" value="12.0" />
+          <param name="run-platform" value="x86" />
+          <param name="targets" value="Rebuild" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="toolsVersion" value="12.0" />
+          <param name="vs.version" value="vs2013" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_12" name="Test" type="VisualStudioTest">
+        <parameters>
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Sort" value="0" />
+          <param name="dotNetCoverage.NCover.HTMLReport.File.Type" value="1" />
+          <param name="dotNetCoverage.NCover.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.Reg" value="selected" />
+          <param name="dotNetCoverage.NCover3.args" value="//ias .*" />
+          <param name="dotNetCoverage.NCover3.platformBitness" value="x86" />
+          <param name="dotNetCoverage.NCover3.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.NCover3.reporter.executable.args" value="//or FullCoverageReport:Html:{teamcity.report.path}" />
+          <param name="dotNetCoverage.PartCover.Reg" value="selected" />
+          <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
+          <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
+          <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.tool" value="dotcover" />
+          <param name="dotNetTestRunner.Type" value="GenericProcess" />
+          <param name="mstest_enable" value="checked" />
+          <param name="teamcity.step.mode" value="default" />
+          <param name="vstest_detect_team_city_logger" value="true" />
+          <param name="vstest_engine" value="VSTest" />
+          <param name="vstest_framework" value="default" />
+          <param name="vstest_include" value="%UnitPath%" />
+          <param name="vstest_platform" value="x86" />
+          <param name="vstest_runner_path" value="%teamcity.dotnet.vstest.12.0%" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_13" name="pack" type="jb.nuget.pack">
+        <parameters>
+          <param name="nuget.pack.as.artifact" value="true" />
+          <param name="nuget.pack.output.directory" value="MmsSetup\bin\Release" />
+          <param name="nuget.pack.pack.mode.tool" value="true" />
+          <param name="nuget.pack.prefer.project" value="true" />
+          <param name="nuget.pack.project.dir" value="as_is" />
+          <param name="nuget.pack.properties" value="Configuration=Release" />
+          <param name="nuget.pack.specFile" value="MmsSetup/Unit.nuspec" />
+          <param name="nuget.pack.version" value="%env.BUILD_NUMBER%" />
+          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Git_UnitTest_Ssh" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="buildDependencyTrigger">
+        <parameters>
+          <param name="afterSuccessfulBuildOnly" value="true" />
+          <param name="branchFilter" value="+:*" />
+          <param name="dependsOn" value="Git_UnitTest_Run" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="VcsLabeling">
+        <parameters>
+          <param name="labelingPattern" value="build-%system.build.number%" />
+          <param name="successfulOnly" value="true" />
+          <param name="vcsRootId" value="Git_UnitTest_Ssh" />
+        </parameters>
+      </extension>
+      <extension id="perfmon" type="perfmon">
+        <parameters />
+      </extension>
+      <extension id="jetbrains.agent.free.space" type="jetbrains.agent.free.space">
+        <parameters>
+          <param name="free-space-work" value="3gb" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
