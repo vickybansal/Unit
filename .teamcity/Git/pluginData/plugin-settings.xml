@@ -4,6 +4,9 @@
     <graph title="New chart title" defaultFilters="" hideFilters="" id="customGraph1" seriesTitle="Serie">
       <valueType key="SuccessRate" title="Success Rate" />
     </graph>
+    <graph title="New chart title" defaultFilters="" hideFilters="" id="customGraph3" seriesTitle="Serie">
+      <valueType key="BuildTestStatus" title="BuildTestStatus" />
+    </graph>
   </buildtype-graphs>
   <report-tabs>
     <report-tab title="Project" buildTypeId="Git_Download">
