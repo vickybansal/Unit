@@ -2,6 +2,17 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" parent-id="Git" uuid="8a459fd1-8379-487c-9282-63475291b1d6" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
   <name>UnitTest</name>
   <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_4" type="OAuthProvider">
+      <parameters>
+        <param name="clientId" value="aaedc87d6922fa54303d" />
+        <param name="displayName" value="GitHub Enterprise" />
+        <param name="gitHubUrl" value="https://github.com" />
+        <param name="providerType" value="GHE" />
+        <param name="secure:clientSecret" value="zxxaef9d55ae8c7aa5583a8976b3054a3cb1f891a9c8b72d8c335be5839f1f425c608c12d875ebd19c0775d03cbe80d301b" />
+      </parameters>
+    </extension>
+  </project-extensions>
   <cleanup />
 </project>
 
