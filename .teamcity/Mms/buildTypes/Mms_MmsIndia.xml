@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="dc37bcc5-2a2f-4319-9030-bcfb9a41509a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="dc37bcc5-2a2f-4319-9030-bcfb9a41509a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
   <name>MMS India</name>
   <description />
   <settings>
+    <options>
+      <option name="checkoutMode" value="ON_SERVER" />
+    </options>
     <disabled-settings>
       <setting-ref ref="RUNNER_5" />
       <setting-ref ref="RUNNER_6" />
       <setting-ref ref="vcsTrigger" />
     </disabled-settings>
     <parameters>
-      <param name="env.AgentWorkDirectory" value="%teamcity.build.workingDir%" />
       <param name="MSBuildParams" value="/p:Configuration=Release &quot;/p:Platform=Any CPU&quot;" />
-      <param name="outputdirectory" value="Code\RMI\EY\Mms\DatabaseDeployment\bin" />
       <param name="Scriptnuspec" value="Code/Rmi/EY/Mms/Database/MMSDatabaseDeployment.nuspec" />
       <param name="SolutionPath" value="Code\RMI\EY\Mms\Mms.sln" />
+      <param name="env.AgentWorkDirectory" value="%teamcity.build.workingDir%" />
+      <param name="outputdirectory" value="Code\RMI\EY\Mms\DatabaseDeployment\bin" />
       <param name="system.teamcity.activeVCSBranch.age.days" value="7" />
     </parameters>
     <build-runners>
       <runner id="RUNNER_3" name="Nuget Restore Packages" type="jb.nuget.installer">
         <parameters>
-          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nuget.path" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
           <param name="nuget.updatePackages.mode" value="sln" />
           <param name="nuget.use.restore" value="install" />
-          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
-          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nugetCustomPath" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
+          <param name="nugetPathSelector" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
           <param name="sln.path" value="%SolutionPath%" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
@@ -89,9 +92,9 @@
           <param name="nuget.pack.properties" value="Configuration=Release" />
           <param name="nuget.pack.specFile" value="Code/Rmi/EY/Mms/Database/MMSDatabaseDeployment.nuspec" />
           <param name="nuget.pack.version" value="%build.number%" />
-          <param name="nuget.path" value="?NuGet.CommandLine.DEFAULT" />
-          <param name="nugetCustomPath" value="?NuGet.CommandLine.DEFAULT" />
-          <param name="nugetPathSelector" value="?NuGet.CommandLine.DEFAULT" />
+          <param name="nuget.path" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
+          <param name="nugetCustomPath" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
+          <param name="nugetPathSelector" value="%teamcity.tool.NuGet.CommandLine.DEFAULT%" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
@@ -104,6 +107,7 @@
     <build-triggers>
       <build-trigger id="vcsTrigger" type="vcsTrigger">
         <parameters>
+          <param name="enableQueueOptimization" value="true" />
           <param name="quietPeriodMode" value="DO_NOT_USE" />
         </parameters>
       </build-trigger>

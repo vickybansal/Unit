@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-  <versionedSettings rootId="Git_UnitTest_Ssh" enabled="true" showChanges="false" buildSettings="ALWAYS_USE_CURRENT" />
+  <tools>
+    <default-versions>
+      <tool-version tool-type="NuGet.CommandLine" id="NuGet.CommandLine.3.4.4" />
+    </default-versions>
+  </tools>
 </settings>
 

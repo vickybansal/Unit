@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="5c950eb8-5a4e-4eee-a3cf-82b206dd9668" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="5c950eb8-5a4e-4eee-a3cf-82b206dd9668" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
   <name>Template</name>
   <settings>
+    <options>
+      <option name="checkoutMode" value="ON_SERVER" />
+    </options>
     <parameters>
       <param name="second" value="Dump" />
       <param name="system.SolutionName" value="abc.sln" />

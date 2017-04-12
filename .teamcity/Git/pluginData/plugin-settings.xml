@@ -1,24 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings>
-  <buildtype-graphs>
-    <graph title="New chart title" defaultFilters="" hideFilters="" id="customGraph1" seriesTitle="Serie">
-      <valueType key="SuccessRate" title="Success Rate" />
-    </graph>
-    <graph title="New chart title" defaultFilters="" hideFilters="" id="customGraph3" seriesTitle="Serie">
-      <valueType key="BuildTestStatus" title="BuildTestStatus" />
-    </graph>
-  </buildtype-graphs>
-  <report-tabs>
-    <report-tab title="Project" buildTypeId="Git_Download">
-      <revisionRule name="lastSuccessful" revision="latest.lastSuccessful" />
-    </report-tab>
-    <build-report-tab title="Hit" />
-  </report-tabs>
-  <project-graphs>
-    <graph title="Chart title" defaultFilters="" hideFilters="" id="customGraph2" seriesTitle="Serie">
-      <valueType key="BuildCheckoutTime" title="Build Checkout Time" sourceBuildTypeId="Git_Download" />
-      <valueType key="buildStageDuration:artifactsPublishing" title="buildStageDuration:artifactsPublishing" sourceBuildTypeId="Git_Download" />
-    </graph>
-  </project-graphs>
-</settings>
+<settings />
 

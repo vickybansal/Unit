@@ -1,8 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="79b85a0a-7893-4f6d-be69-0c6c09ab6bdd" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="79b85a0a-7893-4f6d-be69-0c6c09ab6bdd" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
   <name>Git</name>
   <description>Do repository expire</description>
   <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_1" type="ReportTab">
+      <parameters>
+        <param name="buildTypeId" value="Git_Download" />
+        <param name="revisionRuleName" value="lastSuccessful" />
+        <param name="revisionRuleRevision" value="latest.lastSuccessful" />
+        <param name="title" value="Project" />
+        <param name="type" value="ProjectReportTab" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_2" type="ReportTab">
+      <parameters>
+        <param name="title" value="Hit" />
+        <param name="type" value="BuildReportTab" />
+      </parameters>
+    </extension>
+    <extension id="bt_customGraph1" type="buildtype-graphs">
+      <parameters>
+        <param name="defaultFilters" value="" />
+        <param name="hideFilters" value="" />
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Success Rate",
+    "key": "SuccessRate"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="New chart title" />
+      </parameters>
+    </extension>
+    <extension id="bt_customGraph3" type="buildtype-graphs">
+      <parameters>
+        <param name="defaultFilters" value="" />
+        <param name="hideFilters" value="" />
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "BuildTestStatus",
+    "key": "BuildTestStatus"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="New chart title" />
+      </parameters>
+    </extension>
+    <extension id="buildtype-graphs.order" type="buildtype-graphs.order">
+      <parameters>
+        <param name="order" value="bt_customGraph1,bt_customGraph3" />
+      </parameters>
+    </extension>
+    <extension id="proj_customGraph2" type="project-graphs">
+      <parameters>
+        <param name="defaultFilters" value="" />
+        <param name="hideFilters" value="" />
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Build Checkout Time",
+    "sourceBuildTypeId": "Git_Download",
+    "key": "BuildCheckoutTime"
+  },
+  {
+    "type": "valueType",
+    "title": "buildStageDuration:artifactsPublishing",
+    "sourceBuildTypeId": "Git_Download",
+    "key": "buildStageDuration:artifactsPublishing"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="Chart title" />
+      </parameters>
+    </extension>
+    <extension id="project-graphs.order" type="project-graphs.order">
+      <parameters>
+        <param name="order" value="proj_customGraph2" />
+      </parameters>
+    </extension>
+  </project-extensions>
   <cleanup />
 </project>
 

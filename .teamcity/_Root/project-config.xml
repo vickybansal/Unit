@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="fb0371b8-9dc0-4802-8b9b-2bc3fb179222" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="fb0371b8-9dc0-4802-8b9b-2bc3fb179222" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/10.0/project-config.xsd">
   <name>&lt;Root project&gt;</name>
   <description>Contains all other projects</description>
   <parameters />
+  <project-extensions>
+    <extension id="versionedSettings" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="ALWAYS_USE_CURRENT" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="Git_UnitTest_Ssh" />
+        <param name="showChanges" value="false" />
+      </parameters>
+    </extension>
+  </project-extensions>
   <cleanup>
     <options>
       <option name="preventDependenciesArtifactsFromCleanup" value="false" />
