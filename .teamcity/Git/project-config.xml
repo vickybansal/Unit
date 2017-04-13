@@ -19,6 +19,15 @@
         <param name="type" value="BuildReportTab" />
       </parameters>
     </extension>
+    <extension id="PROJECT_EXT_5" type="OAuthProvider">
+      <parameters>
+        <param name="clientId" value="aaedc87d6922fa54303d" />
+        <param name="displayName" value="GitHub.com" />
+        <param name="gitHubUrl" value="https://github.com/" />
+        <param name="providerType" value="GitHub" />
+        <param name="secure:clientSecret" value="zxx9f474a4fe423cf016ef13fbf030736432f45694b1a2286da62fe53d970e263b2e4b1942486d7509b775d03cbe80d301b" />
+      </parameters>
+    </extension>
     <extension id="bt_customGraph1" type="buildtype-graphs">
       <parameters>
         <param name="defaultFilters" value="" />
