@@ -3,6 +3,10 @@
   <name>Maven</name>
   <description />
   <settings>
+    <options>
+      <option name="artifactRules" value="**/* =&gt; C:\temp\" />
+      <option name="buildNumberPattern" value="1.0.%build.counter%" />
+    </options>
     <parameters />
     <build-runners>
       <runner id="RUNNER_2" name="" type="Maven2">
