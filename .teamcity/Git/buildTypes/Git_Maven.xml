@@ -8,6 +8,7 @@
       <runner id="RUNNER_2" name="" type="Maven2">
         <parameters>
           <param name="goals" value="clean test" />
+          <param name="isIncremental" value="true" />
           <param name="maven.path" value="%teamcity.tool.maven3%" />
           <param name="pomLocation" value="pom.xml" />
           <param name="teamcity.step.mode" value="default" />
