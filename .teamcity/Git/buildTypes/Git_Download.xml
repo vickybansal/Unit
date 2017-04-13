@@ -8,6 +8,9 @@
       <option name="buildNumberPattern" value="1.0.%build.counter%" />
       <option name="checkoutMode" value="ON_AGENT" />
     </options>
+    <disabled-settings>
+      <setting-ref ref="vcsTrigger" />
+    </disabled-settings>
     <parameters />
     <build-runners>
       <runner id="RUNNER_11" name="Nuget package" type="jb.nuget.pack">
